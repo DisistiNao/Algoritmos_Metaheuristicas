@@ -5,6 +5,7 @@ import qualified Construtivas.Gulosa as Gulosa
 import qualified Construtivas.ParcialmenteGulosa as ParcialmenteGulosa
 
 import qualified Refinamento.BestImprovement as BestImprovement
+import qualified Refinamento.FirstImprovement as FirstImprovement
 
 main :: IO ()
 main = menu
@@ -42,9 +43,11 @@ menuRefinamento :: IO ()
 menuRefinamento = do
     putStrLn "Digite uma opção: "
     putStrLn "1 - Best Improvement"
+    putStrLn "2 - First Improvement"
     putStrLn "0 - Exit"
     option <- readLn
     case option of
         1 -> BestImprovement.main >> menu
+        2 -> FirstImprovement.main >> menu
         0 -> menu
         _ -> putStrLn "Error" >> menuConstrutivas
