@@ -4,6 +4,8 @@ import qualified Construtivas.Aleatoria as Aleatoria
 import qualified Construtivas.Gulosa as Gulosa
 import qualified Construtivas.ParcialmenteGulosa as ParcialmenteGulosa
 
+import qualified Metaheuristicas.MultiStart as MultiStart
+
 import qualified Refinamento.BestImprovement as BestImprovement
 import qualified Refinamento.FirstImprovement as FirstImprovement
 import qualified Refinamento.RandomImprovement as RandomImprovement
@@ -16,11 +18,13 @@ menu = do
     putStrLn "Digite uma opção: "
     putStrLn "1 - Construtivas"
     putStrLn "2 - Refinamento"
+    putStrLn "3 - Metaheuristicas"
     putStrLn "0 - Exit"
     option <- readLn
     case option of
         1 -> menuConstrutivas
         2 -> menuRefinamento
+        3 -> menuMetaheuristicas
         0 -> putStrLn ""
         _ -> putStrLn "Error" >> menu
 
@@ -53,4 +57,15 @@ menuRefinamento = do
         2 -> FirstImprovement.main >> menu
         3 -> RandomImprovement.main >> menu
         0 -> menu
-        _ -> putStrLn "Error" >> menuConstrutivas
+        _ -> putStrLn "Error" >> menuRefinamento
+
+menuMetaheuristicas :: IO ()
+menuMetaheuristicas = do
+    putStrLn "Digite uma opção: "
+    putStrLn "1 - Multi-Start"
+    putStrLn "0 - Exit"
+    option <- readLn
+    case option of
+        1 -> MultiStart.main >> menu
+        0 -> menu
+        _ -> putStrLn "Error" >> menuMetaheuristicas
