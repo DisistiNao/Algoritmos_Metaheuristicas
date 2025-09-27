@@ -4,7 +4,9 @@ import qualified Construtivas.Aleatoria as Aleatoria
 import qualified Construtivas.Gulosa as Gulosa
 import qualified Construtivas.ParcialmenteGulosa as ParcialmenteGulosa
 
+import qualified Metaheuristicas.GRASP as GRASP
 import qualified Metaheuristicas.MultiStart as MultiStart
+import qualified Metaheuristicas.SimulatedAnnealing as SimulatedAnnealing
 
 import qualified Refinamento.BestImprovement as BestImprovement
 import qualified Refinamento.FirstImprovement as FirstImprovement
@@ -63,9 +65,13 @@ menuMetaheuristicas :: IO ()
 menuMetaheuristicas = do
     putStrLn "Digite uma opção: "
     putStrLn "1 - Multi-Start"
+    putStrLn "2 - Simulated Annealing"
+    putStrLn "3 - GRASP"
     putStrLn "0 - Exit"
     option <- readLn
     case option of
         1 -> MultiStart.main >> menu
+        2 -> SimulatedAnnealing.main >> menu
+        3 -> GRASP.main >> menu
         0 -> menu
         _ -> putStrLn "Error" >> menuMetaheuristicas

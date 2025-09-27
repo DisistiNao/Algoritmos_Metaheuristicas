@@ -30,6 +30,25 @@ improveRoute route = do
             putStrLn (show dist)
             improveRoute newRoute
 
+returnImproveRoute :: [Int] -> IO [Int]
+returnImproveRoute route = do
+    routeDistance <- Distancias.somaDistancias route
+    let n = length route
+    let positions = [0..n-1]
+    let indexPairs = [(i, j) | i <- positions, j <- positions, i < j]
+
+    shuffledPairs <- Shuffle.main indexPairs
+    maybeFirstCandidate <- ImprovementUtils.findFirstImprovement shuffledPairs route
+
+    case maybeFirstCandidate of
+        Nothing -> return route
+        Just (i, j) -> do
+            newRoute <- ImprovementUtils.swapNodes i j route
+            -- ShowOrder.main newRoute
+            dist <- Distancias.somaDistancias newRoute
+            -- putStrLn (show dist)
+            returnImproveRoute newRoute
+
 best :: [Int] -> IO [Int]
 best route = do
     routeDistance <- Distancias.somaDistancias route

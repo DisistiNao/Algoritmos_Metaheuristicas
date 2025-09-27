@@ -9,13 +9,41 @@ version:             0.1.0.0
 -- description:
 -- bug-reports:
 -- license:
-license-file:        LICENSE
+-- license-file:        LICENSE
 author:              DisistiNao
 maintainer:          gabrielsaldanha373@gmail.com
 -- copyright:
 -- category:
 build-type:          Simple
 extra-source-files:  CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:
+      Auxiliares.Distancias
+      Auxiliares.ImprovementUtils
+      Auxiliares.LerArquivo
+      Auxiliares.RunTimer
+      Auxiliares.ShowOrder
+      Auxiliares.Shuffle
+      Construtivas.Aleatoria
+      Construtivas.Gulosa
+      Construtivas.ParcialmenteGulosa
+      Metaheuristicas.GRASP
+      Metaheuristicas.MultiStart
+      Metaheuristicas.SimulatedAnnealing
+      Refinamento.BestImprovement
+      Refinamento.FirstImprovement
+      Refinamento.RandomImprovement
+    hs-source-dirs: src
+    default-language: Haskell2010
+    build-depends:
+        base >=4.13 && <4.14,
+        random,
+        array
 
 executable ImplementacoesHaskell
   main-is:             Main.hs
