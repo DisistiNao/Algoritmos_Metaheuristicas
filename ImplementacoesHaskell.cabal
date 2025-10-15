@@ -33,6 +33,7 @@ library
       Construtivas.Gulosa
       Construtivas.ParcialmenteGulosa
       Metaheuristicas.GRASP
+      Metaheuristicas.ILS
       Metaheuristicas.MultiStart
       Metaheuristicas.SimulatedAnnealing
       Refinamento.BestImprovement

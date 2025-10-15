@@ -5,6 +5,7 @@ import qualified Construtivas.Gulosa as Gulosa
 import qualified Construtivas.ParcialmenteGulosa as ParcialmenteGulosa
 
 import qualified Metaheuristicas.GRASP as GRASP
+import qualified Metaheuristicas.ILS as ILS
 import qualified Metaheuristicas.MultiStart as MultiStart
 import qualified Metaheuristicas.SimulatedAnnealing as SimulatedAnnealing
 
@@ -67,11 +68,14 @@ menuMetaheuristicas = do
     putStrLn "1 - Multi-Start"
     putStrLn "2 - Simulated Annealing"
     putStrLn "3 - GRASP"
+    putStrLn "4 - ILS"
     putStrLn "0 - Exit"
     option <- readLn
     case option of
         1 -> MultiStart.main >> menu
         2 -> SimulatedAnnealing.main >> menu
         3 -> GRASP.main >> menu
+        4 -> ILS.main >> menu
         0 -> menu
         _ -> putStrLn "Error" >> menuMetaheuristicas
+ 
